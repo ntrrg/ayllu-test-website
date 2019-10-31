@@ -1,0 +1,22 @@
+article.box {
+  color: var(--font-color);
+}
+
+article.box img.background {
+  width: 100%;
+  height: 100%;
+
+  background-position: center;
+  background-size: cover;
+  border-radius: 6px;
+  opacity: 0.1;
+
+  position: absolute;
+  top: 0em;
+  left: 0em;
+}
+
+article.box a {
+  color: var(--primary-color);
+}
+

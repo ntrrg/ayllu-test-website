@@ -1,0 +1,34 @@
+<article class="box is-relative">
+  {{ with .Params.vimage }}
+    <img src="{{ relURL . }}" alt="" class="background"/>
+  {{ end }}
+
+  <div class="content is-relative">
+    <p>
+      <a href="{{ .Permalink }}"><strong>{{ .Title }}</strong></a><br/>
+
+      {{ if isset .Params "author" }}
+        {{ $authorURL := printf "/authors/%s" .Params.author }}
+        {{ $author := .Site.GetPage $authorURL }}
+
+        <small>{{ i18n "BY" }} {{ $author.Params.name }}</small><br/>
+      {{ end }}
+
+      <p>{{ .Description }}</p>
+    </p>
+
+    <nav class="level is-mobile">
+      <div class="level-left"></div>
+
+      <div class="level-right">
+        <a href="{{ .Permalink }}#disqus_thread"
+           class="level-item" aria-label="comments">
+          <span class="icon is-small">
+            <i class="fas fa-comments" aria-hidden="true"></i>
+          </span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</article>
+

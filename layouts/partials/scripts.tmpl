@@ -1,0 +1,38 @@
+{{ $externals := slice }}
+
+{{ with .Params.math }}
+  {{ $externals = $externals | append "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" }}
+{{ end }}
+
+{{ $externals = $externals | append "vendor/fontawesome-5.5.0.js" }}
+
+{{ $suffix := "" }}
+{{ $scripts := slice }}
+{{ $scripts = $scripts | append "js/main.js" }}
+
+{{ range $externals }}
+  {{ if or (hasPrefix . "http://") (hasPrefix . "https://") }}
+    <script defer src="{{ . }}"></script>
+  {{ else }}
+    {{ $script := resources.Get . | minify | fingerprint }}
+
+    <script defer src="{{ $script.Permalink }}"
+            integrity="{{ $script.Data.Integrity }}"></script>
+  {{ end }}
+{{ end }}
+
+{{ if .Site.IsServer }}
+  {{ range $scripts }}
+    {{ $script := resources.Get . }}
+    <script defer src="{{ $script.Permalink }}"></script>
+  {{ end }}
+{{ else }}
+  {{ $res := slice }}
+  {{ range $scripts }}{{ $res = $res | append (resources.Get .) }}{{ end }}
+
+  {{ $script := resources.Concat (printf "js/bundle%v.js" $suffix) $res | minify | fingerprint }}
+
+  <script defer src="{{ $script.Permalink }}"
+          integrity="{{ $script.Data.Integrity }}"></script>
+{{ end }}
+

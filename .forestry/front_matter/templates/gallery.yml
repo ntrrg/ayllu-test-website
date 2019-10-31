@@ -1,0 +1,23 @@
+---
+label: gallery
+hide_body: true
+is_partial: false
+fields:
+- type: text
+  label: Title
+  name: title
+  config:
+    required: true
+- type: datetime
+  label: Date
+  name: date
+  config:
+    date_format: YYYY/MM/DD
+- type: text
+  name: description
+  label: Description
+- type: file
+  name: image
+  label: Image
+pages:
+- content/gallery/hermanos-peña-escalante.es.md

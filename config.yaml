@@ -1,0 +1,38 @@
+baseURL: https://ayllu-test-site.netlify.com
+enableRobotsTXT: true
+permalinks:
+  blog: /:sections/:slug/
+Paginate: 10
+pygmentsCodeFences: true
+pygmentsUseClasses: true
+defaultContentLanguage: es
+defaultContentLanguageInSubdir: false
+languages:
+  es:
+    languageName: Español
+    params:
+      description: Una pequeña descripción del sitio
+      menu:
+        - url: /
+          text: Inicio
+        - url: /nosotros
+          text: Nosotros
+        - url: /prensa
+        - url: /servicios
+        - url: /authors/ayllu
+          text: Contactos
+      slogan:
+        - Tú tienes el potencial suficiente
+        - Para ser único y marcar la diferencia
+params:
+  name: ayllu
+  title: ayllu
+  titleSeparator: "|"
+  author: ayllu
+  singleAuthor: false
+  image: /uploads/logo.png
+  ampImage: /uploads/logo-amp.png
+  vimage: /uploads/bg.png
+  # googleTagManager: GTM-XXXXXXX
+  # disqus: disqusID
+

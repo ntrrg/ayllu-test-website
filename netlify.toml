@@ -1,0 +1,47 @@
+[build]
+  publish = "public"
+  command = "hugo"
+
+[build.environment]
+  HUGO_VERSION = "0.59.0"
+
+[context.deploy-preview]
+  command = "hugo -DEF --baseURL=/"
+
+[[headers]]
+  for = "/*"
+
+[headers.values]
+  X-Frame-Options = "SAMEORIGIN"
+  X-XSS-Protection = "1; mode=block"
+  X-Content-Type-Options = "nosniff"
+  Referrer-Policy = "origin-when-cross-origin"
+
+[[redirects]]
+  from = "https://www.example.com/*"
+  to = "https://example.com/:splat"
+  status = 303
+  force = true
+
+[[redirects]]
+  from = "https://blog.example.com/*"
+  to = "https://example.com/:splat"
+  status = 303
+  force = true
+
+[[redirects]]
+  from = "https://example.netlify.com/*"
+  to = "https://example.com/:splat"
+  status = 303
+  force = true
+
+[[redirects]]
+  from = "/en/*"
+  to = "/en/404/"
+  status = 404
+
+[[redirects]]
+  from = "/es/*"
+  to = "/es/404/"
+  status = 404
+

@@ -1,0 +1,43 @@
+{{ define "header" }}
+  <div class="container">
+    <h1 class="title is-uppercase">{{ .Title }}</h1>
+  </div>
+{{ end }}
+
+{{ define "header-bottom" }}
+  {{ $authorURL := printf "/authors/%s" .Site.Params.author }}
+  {{ $author := .Site.GetPage $authorURL }}
+
+  <div class="container has-text-right">
+    <ul class="contacts">
+      {{ range sort $author.Params.social "weight" }}
+        <li title="{{ .label }}">
+          <a href="{{ .url | safeURL }}">
+            <i class="{{ .icon }}" aria-hidden="true"></i>
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+{{ end }}
+
+{{ define "main" }}
+  <section class="section">
+    {{ partial "pagination.tmpl" . }}
+
+    <div class="container">
+      {{ if gt (len .Paginator.Pages) 0 }}
+        {{ range .Paginator.Pages }}
+          <div class="columns">
+            <div class="column is-8 is-offset-2">
+              {{ partial "card.tmpl" . }}
+            </div>
+          </div>
+        {{ end }}
+      {{ end }}
+    </div>
+
+    {{ partial "pagination.tmpl" . }}
+  </section>
+{{ end }}
+

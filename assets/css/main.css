@@ -1,0 +1,115 @@
+:root {
+  --background: #363636;
+  --font-color: #24292e;
+  --primary-color: #ea2850;
+  --accent-color: #110980;
+
+  --font-family: sans-serif;
+  --font-size: 16px;
+
+  --navbar-background: #333;
+  --navbar-font-color: #fff;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --font-size: 18px;
+  }
+}
+
+@media (min-width: 1400px) {
+  :root {
+    --font-size: 20px;
+  }
+}
+
+@media (min-width: 1900px) {
+  :root {
+    --font-size: 22px;
+  }
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+}
+
+.hero {
+  background-position: top center;
+  background-size: cover;
+}
+
+.navbar .navbar-item.brand img {
+  max-height: none;
+  width: 5em;
+}
+
+.navbar .navbar-burger {
+  background: var(--background);
+  color: var(--navbar-font-color);
+}
+
+.contacts li {
+  display: inline-block;
+  font-size: 1.5em;
+  margin: 0.5em 0.2em;
+}
+
+.contacts li a {
+  color: var(--navbar-font-color);
+}
+
+@media screen and (min-width: 1024px) {
+  #navbar-small {
+    display: none;
+  }
+
+  #navbar-big {
+    margin-top: 1.5em;
+  }
+
+  #navbar-big .navbar-menu .navbar-middle {
+    flex-grow: 1;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  .navbar .navbar-item.brand img {
+    width: 3em;
+  }
+
+  .hero.is-dark a.navbar-item,
+  .hero.is-dark .navbar-link {
+    color: var(--navbar-font-color);
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+
+  .hero.is-dark a.navbar-item:hover,
+  .hero.is-dark a.navbar-item:focus,
+  .hero.is-dark a.navbar-item.is-active,
+  .hero.is-dark .navbar-link:hover,
+  .hero.is-dark .navbar-link:focus,
+  .hero.is-dark .navbar-link.is-active {
+    background-color: transparent;
+  }
+
+  .hero.is-dark a.navbar-item:hover span::after,
+  .hero.is-dark a.navbar-item:focus span::after,
+  .hero.is-dark a.navbar-item.is-active span::after,
+  .hero.is-dark .navbar-link:hover span::after,
+  .hero.is-dark .navbar-link:focus span::after,
+  .hero.is-dark .navbar-link.is-active span::after {
+    content: "";
+
+    width: 100%;
+
+    border-top: 0.1em solid;
+
+    position: absolute;
+    top: 110%;
+    left: 0%;
+  }
+}
+

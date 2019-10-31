@@ -1,0 +1,22 @@
+.service h3 {
+  color: var(--accent-color);
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.service h3::after {
+  content: "";
+
+  width: 100%;
+
+  border-top: 0.15em solid;
+
+  position: absolute;
+  top: 110%;
+  left: 0%;
+}
+
+.service .content {
+  color: var(--primary-color);
+}
+

@@ -1,0 +1,38 @@
+<div class="hero-head">
+  <nav id="navbar-small" class="navbar" role="navigation"
+       aria-label="main navigation">
+    <div class="navbar-brand">
+      <a href="{{ .Site.Home.Permalink }}" class="navbar-item brand">
+        <img src="{{ relURL .Site.Params.image }}"
+             alt="{{ .Site.Params.name }}"/>
+      </a>
+
+      <span class="navbar-burger burger" data-target="navbar-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+
+    <div id="navbar-menu" class="navbar-menu">
+      <div class="navbar-start">
+        {{ partial "menu-items.tmpl" . }}
+      </div>
+    </div>
+  </nav>
+
+  <nav id="navbar-big" class="navbar" role="navigation"
+       aria-label="main navigation">
+    <div class="navbar-menu">
+      <div class="navbar-middle">
+        <a href="{{ .Site.Home.Permalink }}" class="navbar-item brand">
+          <img src="{{ relURL .Site.Params.image }}"
+               alt="{{ .Site.Params.name }}"/>
+        </a>
+
+        {{ partial "menu-items.tmpl" . }}
+      </div>
+    </div>
+  </nav>
+</div>
+

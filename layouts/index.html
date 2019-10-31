@@ -1,0 +1,27 @@
+{{ define "header" }}
+<div class="container has-text-centered">
+  <h1 class="title is-uppercase">
+    {{ range .Site.Params.slogan }}
+      <div>{{ . }}</div>
+    {{ end }}
+  </h1>
+
+  {{ $authorURL := printf "/authors/%s" .Site.Params.author }}
+  {{ $author := .Site.GetPage $authorURL }}
+
+  <h2 class="subtitle">
+    <ul class="contacts">
+      {{ range sort $author.Params.social "weight" }}
+        <li title="{{ .label }}">
+          <a href="{{ .url | safeURL }}">
+            <i class="{{ .icon }}" aria-hidden="true"></i>
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  </h2>
+</div>
+{{ end }}
+
+{{ define "main" }}{{ end }}
+

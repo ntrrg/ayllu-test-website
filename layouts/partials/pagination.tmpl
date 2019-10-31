@@ -1,0 +1,68 @@
+{{ if gt .Paginator.TotalPages 1 }}
+  <br />
+
+  <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+    {{ $pc := .Paginator }}
+
+    <ul class="pagination-list">
+      {{ if gt $pc.PageNumber 2 }}
+        {{ $pf := .Paginator.First }}
+
+        <li>
+          <a href="{{ $pf.URL }}" class="pagination-link"
+             aria-label="Goto page {{ $pf.PageNumber }}">
+            {{ $pf.PageNumber }}
+          </a>
+        </li>
+      {{ end }}
+
+      {{ if gt $pc.PageNumber 3 }}
+        <li><span class="pagination-ellipsis">&hellip;</span></li>
+      {{ end }}
+
+      {{ if $pc.HasPrev }}
+        {{ $pp := .Paginator.Prev }}
+
+        <li>
+          <a href="{{ $pp.URL }}" class="pagination-link"
+             aria-label="Goto page {{ $pp.PageNumber }}">
+            {{ $pp.PageNumber }}
+          </a>
+        </li>
+      {{ end }}
+
+      <li>
+        <a href="{{ $pc.URL }}" class="pagination-link is-current"
+           aria-label="Goto page {{ $pc.PageNumber }}">
+          {{ $pc.PageNumber }}
+        </a>
+      </li>
+
+      {{ if $pc.HasNext }}
+        {{ $pn := .Paginator.Next }}
+
+        <li>
+          <a href="{{ $pn.URL }}" class="pagination-link"
+             aria-label="Goto page {{ $pn.PageNumber }}">
+            {{ $pn.PageNumber }}
+          </a>
+        </li>
+      {{ end }}
+
+      {{ if gt (sub $pc.TotalPages $pc.PageNumber) 2 }}
+        <li><span class="pagination-ellipsis">&hellip;</span></li>
+      {{ end }}
+
+      {{ if gt (sub $pc.TotalPages $pc.PageNumber) 1 }}
+        {{ $pl := .Paginator.Last }}
+
+        <li>
+          <a href="{{ $pl.URL }}" class="pagination-link"
+             aria-label="Goto page {{ $pl.PageNumber }}">
+            {{ $pl.PageNumber }}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  </nav>
+{{ end }}

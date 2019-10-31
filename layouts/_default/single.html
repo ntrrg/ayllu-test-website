@@ -1,0 +1,73 @@
+{{ define "header" }}
+  <div class="container">
+    <h1 class="title is-uppercase">{{ .Title }}</h1>
+    <h2 class="subtitle is-uppercase">{{ .Params.subtitle }}</h2>
+
+    {{ if isset .Params "author" }}
+      {{ $authorURL := printf "/authors/%s" .Params.author }}
+      {{ $author := .Site.GetPage $authorURL }}
+
+      <h2 class="subtitle is-uppercase">
+        {{ i18n "BY" }}
+        {{ $author.Params.name }}
+        {{ $author.Params.position }}
+      </h2>
+    {{ end }}
+  </div>
+{{ end }}
+
+{{ define "header-bottom" }}
+  {{ $authorURL := printf "/authors/%s" .Site.Params.author }}
+  {{ $author := .Site.GetPage $authorURL }}
+
+  <div class="container has-text-right">
+    <ul class="contacts">
+      {{ range sort $author.Params.social "weight" }}
+        <li title="{{ .label }}">
+          <a href="{{ .url | safeURL }}">
+            <i class="{{ .icon }}" aria-hidden="true"></i>
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+{{ end }}
+
+{{ define "main" }}
+  <section class="section">
+    <article class="container article">
+      <div class="markdown">
+        {{ .Content }}
+      </div>
+    </article>
+  </section>
+
+  {{ if and (eq .Params.comments true) (not .Site.IsServer) }}
+    {{ $page := . }}
+
+    {{ with .Site.Params.disqus }}
+      <section class="section comments">
+        <div id="disqus_thread" class="container"></div>
+      </section>
+
+      <script>
+        var disqus_config = function () {
+          this.page.url = '{{ absURL $page.Permalink }}';
+          this.page.identifier = '{{ $page.Permalink }}';
+        };
+
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = 'https://{{ . }}.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+
+      <noscript>
+        Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+      </noscript>
+    {{ end }}
+  {{ end }}
+{{ end }}
+
