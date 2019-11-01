@@ -19,7 +19,7 @@ languages:
           text: Nosotros
         - url: /prensa
         - url: /servicios
-        - url: /authors/ayllu
+        - url: /contactos
           text: Contactos
       slogan:
         - Tú tienes el potencial suficiente

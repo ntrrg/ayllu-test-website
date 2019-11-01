@@ -1,0 +1,62 @@
+{{ define "header" }}
+  <div class="container">
+    <h1 class="title is-uppercase">{{ .Title }}</h1>
+    <h2 class="subtitle is-uppercase">{{ .Params.subtitle }}</h2>
+  </div>
+{{ end }}
+
+{{ define "header-bottom" }}
+  {{ $authorURL := printf "/authors/%s" .Site.Params.author }}
+  {{ $author := .Site.GetPage $authorURL }}
+
+  <div class="container has-text-right">
+    <ul class="contacts">
+      {{ range sort $author.Params.social "weight" }}
+        <li title="{{ .label }}">
+          <a href="{{ .url | safeURL }}">
+            <i class="{{ .icon }}" aria-hidden="true"></i>
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+{{ end }}
+
+{{ define "main" }}
+  {{ $authorURL := printf "/authors/%s" .Site.Params.author }}
+  {{ $author := .Site.GetPage $authorURL }}
+  {{ $email := $author.Params.social.email.text }}
+
+  <section class="section">
+    <div class="container">
+      <form method="POST" action="https://formspree.io/{{ $email }}">
+        <div class="fields">
+          <label class="field-label">
+            <strong>{{ i18n "NAME" }}:</strong>
+
+            <input type="text" name="name" placeholder="{{ i18n "NAME" }}"
+                   class="input"/>
+          </label>
+
+          <label class="field-label">
+            <strong>{{ i18n "EMAIL" }}:</strong>
+
+            <input type="email" name="email" placeholder="{{ i18n "EMAIL" }}"
+                   class="input"/>
+          </label>
+
+          <label class="field-label">
+            <strong>{{ i18n "MESSAGE" }}:</strong>
+
+            <textarea name="message" placeholder="{{ i18n "MESSAGE" }}"
+                      rows="4" class="textarea"></textarea>
+          </label>
+        </div>
+
+        <input type="hidden" name="_subject" value="[WEBSITE]"/>
+        <input type="submit" class="button" value="{{ i18n "SEND" }}"/>
+      </form>
+    </div>
+  </section>
+{{ end }}
+

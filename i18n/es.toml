@@ -22,17 +22,26 @@ other = "Enlaces de interés"
 [DEFAULT_NOTE_TITLE]
 other = "Nota"
 
+[EMAIL]
+other = "Correo electrónico"
+
 [KINDS]
 other = "Tipos"
 
 [LICENSE]
 other = "Lincencia"
 
+[MESSAGE]
+other = "Mensaje"
+
 [NAME]
 other = "Nombre"
 
 [NO_CONTENT]
 other = "[WIP] Todavía no hay contenido en esta sección."
+
+[SEND]
+other = "Enviar"
 
 [SETTINGS]
 other = "Ajustes"

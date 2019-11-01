@@ -29,6 +29,12 @@ social:
     url: https://www.linkedin.com/in/ayllu
     icon: fab fa-linkedin
     weight: 7
+  email:
+    label: Correo electrónico
+    text: info@ayllu.com
+    url: mailto://info@ayllu.com
+    icon: fa fa-envelope
+    weight: 8
 authortype: Organization
 ---
 
