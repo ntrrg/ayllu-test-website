@@ -1,7 +1,6 @@
 ---
 label: gallery
 hide_body: true
-is_partial: false
 fields:
 - type: text
   label: Title
@@ -19,5 +18,3 @@ fields:
 - type: file
   name: image
   label: Image
-pages:
-- content/gallery/hermanos-peña-escalante.es.md
