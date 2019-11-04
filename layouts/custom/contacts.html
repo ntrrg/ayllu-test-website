@@ -32,33 +32,53 @@
       <div class="columns">
         <div class="column is-6 is-offset-3">
           <form method="POST" action="https://formspree.io/{{ $email }}">
-            <div class="fields">
-              <label class="field-label">
-                <strong>{{ i18n "NAME" }}:</strong>
-
-                <input type="text" name="name" placeholder="{{ i18n "NAME" }}"
-                       class="input"/>
+            <div class="field">
+              <label class="label" for="field-name">
+                {{ i18n "NAME" }}:
               </label>
 
-              <label class="field-label">
-                <strong>{{ i18n "EMAIL" }}:</strong>
+              <p class="control has-icons-left">
+                <input type="text" id="field-name" name="name"
+                       placeholder="{{ i18n "NAME" }}" class="input">
 
-                <input type="email" name="email"
-                       placeholder="{{ i18n "EMAIL" }}" class="input"/>
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+              </p>
+            </div>
+
+            <div class="field">
+              <label class="label" for="field-email">
+                {{ i18n "EMAIL" }}:
               </label>
 
-              <label class="field-label">
-                <strong>{{ i18n "MESSAGE" }}:</strong>
+              <p class="control has-icons-left">
+                <input type="email" id="field-email" name="email"
+                       placeholder="{{ i18n "EMAIL" }}" class="input">
 
+                <span class="icon is-small is-left">
+                  <i class="fas fa-envelope"></i>
+                </span>
+              </p>
+            </div>
+
+            <div class="field">
+              <label class="label" for="field-message">
+                {{ i18n "MESSAGE" }}:
+              </label>
+
+              <p class="control">
                 <textarea name="message" placeholder="{{ i18n "MESSAGE" }}"
-                          rows="4" class="textarea"></textarea>
-              </label>
+                          class="textarea has-fixed-size"></textarea>
+              </p>
             </div>
 
             <input type="hidden" name="_subject" value="[WEBSITE]"/>
 
-            <div class="has-text-centered">
-              <input type="submit" class="button" value="{{ i18n "SEND" }}"/>
+            <div class="field">
+              <p class="control has-text-centered">
+                <input type="submit" class="button" value="{{ i18n "SEND" }}"/>
+              </p>
             </div>
           </form>
         </div>
