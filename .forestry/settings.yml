@@ -4,8 +4,6 @@ auto_deploy: false
 admin_path: "/admin/"
 webhook_url: 
 sections:
-- type: heading
-  label: Español
 - type: directory
   path: content
   label: Páginas
@@ -13,7 +11,7 @@ sections:
   match: "*.es.*"
   new_doc_ext: es.md
 - type: directory
-  path: content/blog
+  path: content/prensa
   label: Artículos
   create: all
   match: "**/*.es.*"
@@ -22,27 +20,10 @@ sections:
   templates:
   - default
 - type: heading
-  label: English
-- type: directory
-  path: content
-  label: Pages
-  create: documents
-  match: "*.en.*"
-  new_doc_ext: en.md
-- type: directory
-  path: content/blog
-  label: Articles
-  create: all
-  match: "**/*.en.*"
-  exclude: "**/_*"
-  new_doc_ext: en.md
-  templates:
-  - default
-- type: heading
-  label: Settings
+  label: Configuración
 - type: document
   path: config.yaml
-  label: Parameters
+  label: Parámetros
 upload_dir: static/uploads
 public_path: "/uploads"
 front_matter_path: ''
