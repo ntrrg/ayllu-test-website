@@ -29,33 +29,40 @@
 
   <section class="section">
     <div class="container">
-      <form method="POST" action="https://formspree.io/{{ $email }}">
-        <div class="fields">
-          <label class="field-label">
-            <strong>{{ i18n "NAME" }}:</strong>
+      <div class="columns">
+        <div class="column is-6 is-offset-3">
+          <form method="POST" action="https://formspree.io/{{ $email }}">
+            <div class="fields">
+              <label class="field-label">
+                <strong>{{ i18n "NAME" }}:</strong>
 
-            <input type="text" name="name" placeholder="{{ i18n "NAME" }}"
-                   class="input"/>
-          </label>
+                <input type="text" name="name" placeholder="{{ i18n "NAME" }}"
+                       class="input"/>
+              </label>
 
-          <label class="field-label">
-            <strong>{{ i18n "EMAIL" }}:</strong>
+              <label class="field-label">
+                <strong>{{ i18n "EMAIL" }}:</strong>
 
-            <input type="email" name="email" placeholder="{{ i18n "EMAIL" }}"
-                   class="input"/>
-          </label>
+                <input type="email" name="email"
+                       placeholder="{{ i18n "EMAIL" }}" class="input"/>
+              </label>
 
-          <label class="field-label">
-            <strong>{{ i18n "MESSAGE" }}:</strong>
+              <label class="field-label">
+                <strong>{{ i18n "MESSAGE" }}:</strong>
 
-            <textarea name="message" placeholder="{{ i18n "MESSAGE" }}"
-                      rows="4" class="textarea"></textarea>
-          </label>
+                <textarea name="message" placeholder="{{ i18n "MESSAGE" }}"
+                          rows="4" class="textarea"></textarea>
+              </label>
+            </div>
+
+            <input type="hidden" name="_subject" value="[WEBSITE]"/>
+
+            <div class="has-text-centered">
+              <input type="submit" class="button" value="{{ i18n "SEND" }}"/>
+            </div>
+          </form>
         </div>
-
-        <input type="hidden" name="_subject" value="[WEBSITE]"/>
-        <input type="submit" class="button" value="{{ i18n "SEND" }}"/>
-      </form>
+      </div>
     </div>
   </section>
 {{ end }}
