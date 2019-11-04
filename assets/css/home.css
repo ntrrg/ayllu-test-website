@@ -4,3 +4,13 @@
   font-weight: normal;
 }
 
+.slogan .slogan-item {
+  width: 0ex;
+
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+
+  animation: 15s forwards infinite steps(40, end);
+}
+

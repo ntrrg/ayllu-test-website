@@ -10,6 +10,11 @@
 {{ $scripts := slice }}
 {{ $scripts = $scripts | append "js/main.js" }}
 
+{{ if .IsHome }}
+  {{ $suffix = printf "%v-home" $suffix  }}
+  {{ $scripts = $scripts | append "js/home.js" }}
+{{ end }}
+
 {{ range $externals }}
   {{ if or (hasPrefix . "http://") (hasPrefix . "https://") }}
     <script defer src="{{ . }}"></script>

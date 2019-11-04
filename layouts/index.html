@@ -1,8 +1,23 @@
 {{ define "header" }}
 <div class="container has-text-centered">
-  <h1 class="title is-uppercase">
-    {{ range .Site.Params.slogan }}
-      <div>{{ . }}</div>
+  <h1 class="title is-uppercase is-relative slogan">
+    {{ range $i, $line := .Site.Params.slogan }}
+      <style>
+        @keyframes typing-slogan-{{ $i }} {
+          {{ if eq $i 0 }}0%, 50%{{ else }}50%, 100%{{ end }} {
+            width: 0ex;
+          }
+
+          {{ if eq $i 0 }}10%, 40%{{ else }}60%, 90%{{ end }} {
+            width: {{ strings.RuneCount $line | add 2 }}ex;
+          }
+        }
+      </style>
+
+      <span class="slogan-item"
+            style="animation-name: typing-slogan-{{ $i }};">
+        {{ $line }}
+      </span>
     {{ end }}
   </h1>
 
