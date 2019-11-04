@@ -4,13 +4,15 @@
   font-weight: normal;
 }
 
-.slogan .slogan-item {
-  width: 0ex;
+@media screen and (min-width: 1024px) {
+  .slogan .slogan-item {
+    width: 0ex;
 
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
 
-  animation: 15s forwards infinite steps(40, end);
+    animation: 15s forwards infinite steps(40, end);
+  }
 }
 
