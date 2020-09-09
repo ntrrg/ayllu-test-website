@@ -1,4 +1,3 @@
----
 baseURL: https://ayllu-test-website.netlify.com
 enableRobotsTXT: true
 permalinks:

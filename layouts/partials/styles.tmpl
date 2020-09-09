@@ -33,9 +33,8 @@
   {{ $res := slice }}
   {{ range $sheets }}{{ $res = $res | append (resources.Get .) }}{{ end }}
 
-  {{ $sheet := resources.Concat (printf "css/bundle%v.css" $suffix) $res | minify | fingerprint }}
+  {{ $sheet := resources.Concat (printf "css/bundle%v.css" $suffix) $res | minify }}
 
-  <link rel="stylesheet" type="text/css" href="{{ $sheet.Permalink }}"
-        integrity="{{ $sheet.Data.Integrity }}"/>
+  <link rel="stylesheet" type="text/css" href="{{ $sheet.Permalink }}"/>
 {{ end }}
 
